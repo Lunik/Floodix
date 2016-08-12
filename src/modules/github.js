@@ -1,3 +1,5 @@
+'use strict'
+
 function Git(){
 	this.info = {
 		name: 'Git',

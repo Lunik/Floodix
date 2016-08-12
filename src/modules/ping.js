@@ -1,3 +1,5 @@
+'use strict'
+
 var ping = require('ping')
 
 function Ping(){

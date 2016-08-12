@@ -1,3 +1,5 @@
+'use strict'
+
 function Help(){
 	this.info = {
 		name: 'Help',

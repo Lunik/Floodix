@@ -1,3 +1,5 @@
+'use strict'
+
 var config = require('../configs/config.json')
 
 var fs = require('fs')

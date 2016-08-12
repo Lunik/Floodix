@@ -1,3 +1,5 @@
+'use strict'
+
 var config = require('../configs/config.json')
 var Log = require('./log.js')
 
