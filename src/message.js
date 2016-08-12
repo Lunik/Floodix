@@ -14,8 +14,13 @@ function Message (bot) {
     self.watch(message)
     if(isMentionated(message)) {
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
+      
+      bot.startTyping(message.channel)
       self.process(message, function(results){
-        bot.reply(message, results);
+        if(results){
+          bot.reply(message, results)
+        }
+        bot.stopTyping(message.channel)
       })
     }
   })
@@ -27,7 +32,7 @@ Message.prototype.process = function(message, cb){
   var command = CommandWorker.getCommand(text)
 
   if(!CommandWorker.exist(command)){
-    cb('Unknown command.')
+    cb(false)
     return
   }
 
