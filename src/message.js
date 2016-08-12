@@ -11,6 +11,7 @@ var CommandWorker = require('./command.js')
 function Message (bot) {
   var self = this
   bot.on('message', function(message){
+    self.watch(message)
     if(isMentionated(message)) {
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
       self.process(message, function(results){
@@ -36,6 +37,10 @@ Message.prototype.process = function(message, cb){
   }
 
   CommandWorker.process(command, cb)
+}
+
+Message.prototype.watch = function(message){
+
 }
 
 function cleanMessageText (message){
