@@ -15,9 +15,11 @@ function Command(){
 		if(err){ console.log(err) }
 
 		modules.forEach(function(value){
-			var name = value.replace(/\.js/, '')
-			var module = require(path.join(__dirname, 'modules', value))
-			self.list[module.info.trigger] = module
+			if(value.match(/.*\.js/)){
+				var name = value.replace(/\.js/, '')
+				var module = require(path.join(__dirname, 'modules', value))
+				self.list[module.info.trigger] = module
+			}
 		})
 	})
 }
