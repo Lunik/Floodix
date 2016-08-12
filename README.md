@@ -12,3 +12,7 @@ Add it to your server `https://discordapp.com/oauth2/authorize?client_id=<YOUR_B
 
 ## Configuration
 See `configs/config.json`
+
+# Dev !
+### Create modules
+see [How to create module](https://github.com/Lunik/Floodix/tree/master/src/modules/README.md)
