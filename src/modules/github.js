@@ -9,11 +9,15 @@ function Git(){
 }
 
 Git.prototype.run = function(args, cb){
-	switch(args[0]){
-		default: 
-			cb('Help me to be better ! https://github.com/Lunik/Floodix')
-			break
+	var git = function(args){
+		switch(args[0]){
+			default: 
+				return 'Help me to be better ! https://github.com/Lunik/Floodix'
+				break
+		}
 	}
+
+	cb(git(args))
 }
 
 module.exports = new Git()
