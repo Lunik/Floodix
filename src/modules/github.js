@@ -12,7 +12,7 @@ Git.prototype.run = function(args, cb){
 	var git = function(args){
 		switch(args[0]){
 			default: 
-				return 'Help me to be better ! https://github.com/Lunik/Floodix'
+				return 'help me to be better ! https://github.com/Lunik/Floodix'
 				break
 		}
 	}

@@ -16,7 +16,7 @@ Help.prototype.run = function(args, cb){
 	var help = function(args){
 		switch(args[0]){
 			default: 
-				return '**Floodix Help**\n\n'
+				return '\n**Floodix Help**\n\n'
 					+ 'Talk to him with **Floodix**\n\n'
 					+ '[optional parameter]\n<required parameter>\n'
 					+ '\n__**General :**__\n\n'

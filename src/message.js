@@ -15,7 +15,7 @@ function Message (bot) {
     if(isMentionated(message)) {
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
       self.process(message, function(results){
-        bot.sendMessage(message, '<@'+message.author.id + '>\n' + results);
+        bot.reply(message, results);
       })
     }
   })
