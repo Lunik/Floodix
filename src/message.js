@@ -3,8 +3,10 @@
 var config = require('../configs/config.json')
 var Log = require('./log.js')
 
-var CommandWorker = require('./command.js')
-var XpWorker = require('./xp.js')
+var Command = require('./command.js')
+var CommandWorker = new Command()
+var Xp = require('./xp.js')
+var XpWorker = new Xp(false)
 
 /**
  *  Message handler.

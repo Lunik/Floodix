@@ -5,11 +5,13 @@ var Save = require('./save.js')
 var rand = require('crypto-rand')
 var math = require('mathjs')
 
-function Xp () {
+function Xp (useApi) {
   this.users = require('../data/xp.json')
-  this.SaveWorker = new Save('xp', this.users, 300000, function(){
-    Log.print('Xp saved.')
-  })
+  if(!useApi){
+    this.SaveWorker = new Save('xp', this.users, 300000, function(){
+      Log.print('Xp saved.')
+    })
+  }
 }
 
 Xp.prototype.pex = function (author) {
@@ -53,4 +55,4 @@ Xp.prototype.pex = function (author) {
 Xp.prototype.getXp = function (lvl) {
   return math.round(2 * math.pow(lvl + math.sqrt(lvl / 2), 2))
 }
-module.exports = new Xp()
+module.exports = Xp

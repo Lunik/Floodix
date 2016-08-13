@@ -6,7 +6,7 @@ var Log = require('./log.js')
 var fs = require('fs')
 var path = require('path')
 
-function Command () {
+function Command (useApi) {
   var self = this
 
   this.list = {}
@@ -65,4 +65,4 @@ Command.prototype.process = function (command, cb) {
   this.list[command.trigger].run(command.args, cb)
 }
 
-module.exports = new Command()
+module.exports = Command
