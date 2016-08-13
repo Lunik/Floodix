@@ -1,14 +1,21 @@
 var SaveWorker = require('./save.js')
 var Log = require('./log.js')
+var Save = require('./save.js')
 
 var rand = require('crypto-rand')
 var math = require('mathjs')
 
 function Xp () {
   this.users = require('../data/xp.json')
+  this.SaveWorker = new Save('xp', this.users, 300000, function(){
+    Log.print('Xp saved.')
+  })
 }
 
 Xp.prototype.pex = function (author) {
+  if(author.bot){
+    return false
+  }
   var currentDate = new Date()
 
   var message = ''
