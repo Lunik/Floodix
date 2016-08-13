@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "sh -c scripts/init.sh",
-    "test": "echo \"Error: no test specified\"",
+    "test": "node test/test.js",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js -w src/"
   },
