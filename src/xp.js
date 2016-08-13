@@ -1,3 +1,5 @@
+'use strict'
+
 var SaveWorker = require('./save.js')
 var Log = require('./log.js')
 var Save = require('./save.js')
