@@ -26,8 +26,10 @@ function Command () {
 
 Command.prototype.getCommand = function (text) {
   text = text.match(/"(?:\\"|[^"])+"|[^ ]+/g)
+  if(!text){
+    text = []
+  }
   text.forEach(function (value, index) {text[index] = value.replace(/"/g, '')})
-  console.log(text)
   return {
     trigger: text.splice(0, 1)[0],
     args: text
