@@ -55,4 +55,8 @@ Xp.prototype.pex = function (author) {
 Xp.prototype.getXp = function (lvl) {
   return math.round(2 * math.pow(lvl + math.sqrt(lvl / 2), 2))
 }
+
+Xp.prototype.getUser = function(user){
+  return this.users[author.id]
+}
 module.exports = Xp
