@@ -4,12 +4,15 @@ var config = require('../configs/config.json')
 var Log = require('./log.js')
 
 var CommandWorker = require('./command.js')
+var XpWorker = require('./xp.js')
+
 /**
  *  Message handler.
  * @constructor
 */
 function Message (bot) {
   var self = this
+  this.bot = bot
   bot.on('message', function (message) {
     self.watch(message)
     if (isMentionated(message)) {
@@ -41,7 +44,12 @@ Message.prototype.process = function (message, cb) {
   CommandWorker.process(command, cb)
 }
 
-Message.prototype.watch = function (message) {}
+Message.prototype.watch = function (message) {
+  var pex = XpWorker.pex(message.author)
+  if(pex){
+    this.bot.reply(message, pex)
+  }
+}
 
 function cleanMessageText (message) {
   var text = message.cleanContent.split(' ')

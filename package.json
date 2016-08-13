@@ -12,7 +12,9 @@
   "author": "Lunik <contact@lunik.xyz>",
   "license": "ISC",
   "dependencies": {
+    "crypto-rand": "0.0.2",
     "discord.js": "^8.1.0",
+    "mathjs": "^3.4.1",
     "ping": "^0.1.10"
   },
   "devDependencies": {
