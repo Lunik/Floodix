@@ -14,13 +14,10 @@ function Message (bot) {
     self.watch(message)
     if(isMentionated(message)) {
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
-      
-      bot.startTyping(message.channel)
-      self.process(message, function(results){
+        self.process(message, function(results){
         if(results){
           bot.reply(message, results)
         }
-        bot.stopTyping(message.channel)
       })
     }
   })
