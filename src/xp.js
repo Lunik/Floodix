@@ -59,4 +59,23 @@ Xp.prototype.getXp = function (lvl) {
 Xp.prototype.getUser = function(user){
   return this.users[user.id]
 }
+
+Xp.prototype.userCount = function(){
+  return Object.keys(this.users).length
+}
+Xp.prototype.getRank = function(user){
+  var rank = 1
+  user = this.users[user.id]
+
+  for(let i in this.users){
+    let u = this.users[i]
+
+    if(u.xp > user.xp){
+      rank++
+    }
+  }
+
+  return rank
+}
+
 module.exports = Xp
