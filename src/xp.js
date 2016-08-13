@@ -57,6 +57,6 @@ Xp.prototype.getXp = function (lvl) {
 }
 
 Xp.prototype.getUser = function(user){
-  return this.users[author.id]
+  return this.users[user.id]
 }
 module.exports = Xp
