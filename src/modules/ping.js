@@ -14,7 +14,7 @@ function Ping () {
   }
 }
 
-Ping.prototype.run = function (args, cb) {
+Ping.prototype.run = function (user, args, cb) {
   if (args.length === 0) {
     cb('Pong')
   } else {

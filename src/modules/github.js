@@ -8,7 +8,7 @@ function Git () {
   }
 }
 
-Git.prototype.run = function (args, cb) {
+Git.prototype.run = function (user, args, cb) {
   var git = function (args) {
     switch (args[0]) {
       default:

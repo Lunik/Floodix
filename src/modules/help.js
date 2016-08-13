@@ -12,7 +12,7 @@ function Help () {
   }
 }
 
-Help.prototype.run = function (args, cb) {
+Help.prototype.run = function (user, args, cb) {
   var help = function (args) {
     switch (args[0]) {
       default:

@@ -43,7 +43,7 @@ Message.prototype.process = function (message, cb) {
     return
   }
 
-  CommandWorker.process(command, cb)
+  CommandWorker.process(message.author, command, cb)
 }
 
 Message.prototype.watch = function (message) {

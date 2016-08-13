@@ -61,8 +61,8 @@ Command.prototype.isValid = function (command) {
   return true
 }
 
-Command.prototype.process = function (command, cb) {
-  this.list[command.trigger].run(command.args, cb)
+Command.prototype.process = function (user, command, cb) {
+  this.list[command.trigger].run(user, command.args, cb)
 }
 
 module.exports = Command

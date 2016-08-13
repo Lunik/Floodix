@@ -20,7 +20,7 @@ function MyModule(){
 	}
 }
 
-MyModule.prototype.run = function(args, cb){
+MyModule.prototype.run = function(user, args, cb){
 	/* Doing so stuff */
 	cb(myResults)
 }
