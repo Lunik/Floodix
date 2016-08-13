@@ -1,7 +1,7 @@
 #!/bin/sh
 
 
-for dir in logs;
+for dir in logs data
 do
   if ! [ -d $dir ]
     then echo "==> Creating $dir"

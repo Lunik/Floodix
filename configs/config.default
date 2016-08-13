@@ -2,6 +2,9 @@
 	"token": "BOT_TOKEN",
 	"clientid": "BOT_CLIENT_ID",
 	"log": {
-    	"path": "logs/"
-  	}
+    "path": "logs/"
+  },
+	"data": {
+		"path": "data/"
+	}
 }
