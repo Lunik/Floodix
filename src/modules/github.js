@@ -1,23 +1,23 @@
 'use strict'
 
-function Git(){
-	this.info = {
-		name: 'Git',
-		trigger: 'git',
-		args: []
-	}
+function Git () {
+  this.info = {
+    name: 'Git',
+    trigger: 'git',
+    args: []
+  }
 }
 
-Git.prototype.run = function(args, cb){
-	var git = function(args){
-		switch(args[0]){
-			default: 
-				return 'help me to be better ! https://github.com/Lunik/Floodix'
-				break
-		}
-	}
+Git.prototype.run = function (args, cb) {
+  var git = function (args) {
+    switch (args[0]) {
+      default:
+        return 'help me to be better ! https://github.com/Lunik/Floodix'
+        break
+    }
+  }
 
-	cb(git(args))
+  cb(git(args))
 }
 
 module.exports = new Git()
