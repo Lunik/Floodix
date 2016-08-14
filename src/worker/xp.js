@@ -36,7 +36,7 @@ Xp.prototype.pex = function (author) {
     }
   }
 
-  if (currentDate - user.last > 0) {
+  if (currentDate - user.last > 60000) {
     user.last = currentDate
     var newXp = rand.randInt(1, 10)
     user.xp += newXp
