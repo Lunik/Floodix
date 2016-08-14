@@ -2,7 +2,6 @@
 var fs = require('fs')
 var path = require('path')
 
-var config = require(path.join(__base, 'configs/config.json'))
 var Log = require(path.join(__base, 'src/worker/log.js'))
 
 function Command (useApi) {

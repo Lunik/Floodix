@@ -2,7 +2,6 @@
 
 var path = require('path')
 
-var config = require(path.join(__base, 'configs/config.json'))
 var Log = require(path.join(__base, 'src/worker/log.js'))
 
 var Command = require(path.join(__base, 'src/worker/command.js'))
@@ -64,7 +63,7 @@ function cleanMessageText (message) {
 function isMentionated (message) {
   for (let i in message.mentions) {
     let user = message.mentions[i]
-    if (user.id == config.clientid && message.content.split(' ')[0] === '<@' + config.clientid + '>') {
+    if (user.id == __config.clientid && message.content.split(' ')[0] === '<@' + __config.clientid + '>') {
       return true
     }
   }
