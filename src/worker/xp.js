@@ -1,23 +1,24 @@
 'use strict'
 
-var SaveWorker = require('./save.js')
-var Log = require('./log.js')
-var Save = require('./save.js')
+var path = require('path')
+
+var Log = require(path.join(__base, 'src/worker/log.js'))
+var Save = require(path.join(__base, 'src/worker/save.js'))
 
 var rand = require('crypto-rand')
 var math = require('mathjs')
 
 function Xp (useApi) {
-  this.users = require('../data/xp.json')
-  if(!useApi){
-    this.SaveWorker = new Save('xp', this.users, 300000, function(){
+  this.users = require(path.join(__base, 'data/xp.json'))
+  if (!useApi) {
+    this.SaveWorker = new Save('xp', this.users, 300000, function () {
       Log.print('Xp saved.')
     })
   }
 }
 
 Xp.prototype.pex = function (author) {
-  if(author.bot){
+  if (author.bot) {
     return false
   }
   var currentDate = new Date()
@@ -35,7 +36,7 @@ Xp.prototype.pex = function (author) {
     }
   }
 
-  if (currentDate - user.last > 0) {
+  if (currentDate - user.last > 60000) {
     user.last = currentDate
     var newXp = rand.randInt(1, 10)
     user.xp += newXp
@@ -45,7 +46,7 @@ Xp.prototype.pex = function (author) {
       user.lvl++
       user.missing = this.getXp(user.lvl + 1)
       message = ' you just advanced to **level ' + user.lvl + '** !'
-      Log.print(author.name + ' is now level ' + user.lvl +'.')
+      Log.print(author.name + ' is now level ' + user.lvl + '.')
     }
   }
 
@@ -58,21 +59,21 @@ Xp.prototype.getXp = function (lvl) {
   return math.round(2 * math.pow(lvl + math.sqrt(lvl / 2), 2))
 }
 
-Xp.prototype.getUser = function(user){
+Xp.prototype.getUser = function (user) {
   return this.users[user.id]
 }
 
-Xp.prototype.userCount = function(){
+Xp.prototype.userCount = function () {
   return Object.keys(this.users).length
 }
-Xp.prototype.getRank = function(user){
+Xp.prototype.getRank = function (user) {
   var rank = 1
   user = this.users[user.id]
 
-  for(let i in this.users){
+  for (let i in this.users) {
     let u = this.users[i]
 
-    if(u.xp > user.xp){
+    if (u.xp > user.xp) {
       rank++
     }
   }

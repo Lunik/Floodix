@@ -1,4 +1,5 @@
 # Floodix
+[![codecov](https://codecov.io/gh/Lunik/Floodix/branch/master/graph/badge.svg)](https://codecov.io/gh/Lunik/Floodix)
 
 ## Installation
 ```

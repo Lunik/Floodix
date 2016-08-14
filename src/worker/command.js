@@ -1,24 +1,24 @@
 'use strict'
-
-var config = require('../configs/config.json')
-var Log = require('./log.js')
-
 var fs = require('fs')
 var path = require('path')
+
+var Log = require(path.join(__base, 'src/worker/log.js'))
 
 function Command (useApi) {
   var self = this
 
   this.list = {}
 
-  fs.readdir(path.join(__dirname, 'modules'), function (err, modules) {
+  fs.readdir(path.join(__base, 'src/modules'), function (err, modules) {
     if (err) { console.log(err) }
 
     modules.forEach(function (value) {
       if (value.match(/.*\.js/)) {
         var name = value.replace(/\.js/, '')
-        var module = require(path.join(__dirname, 'modules', value))
-        self.list[module.info.trigger] = module
+        var module = require(path.join(__base, 'src/modules', value))
+        module.info.triggers.forEach(function (trigger) {
+          self.list[trigger] = module
+        })
       }
     })
   })
@@ -26,7 +26,7 @@ function Command (useApi) {
 
 Command.prototype.getCommand = function (text) {
   text = text.match(/"(?:\\"|[^"])+"|[^ ]+/g)
-  if(!text){
+  if (!text) {
     text = []
   }
   text.forEach(function (value, index) {text[index] = value.replace(/"/g, '')})

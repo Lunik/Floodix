@@ -6,7 +6,7 @@ Follow this template
 function MyModule(){
 	this.info = {
 		name: 'MyModule',
-		trigger: 'mymodule',
+		triggers: ['mymodule'],
 		args: [{
 			name: 'myFirstArg',
 			require: true,

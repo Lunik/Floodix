@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "sh -c scripts/init.sh",
-    "test": "node test/test.js",
+    "test": "istanbul cover _mocha -- -R spec test/*",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js -w src/"
   },
@@ -14,10 +14,14 @@
   "dependencies": {
     "crypto-rand": "0.0.2",
     "discord.js": "^8.1.0",
+    "imgur-search": "^1.0.1",
     "mathjs": "^3.4.1",
     "ping": "^0.1.10"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.4",
+    "mocha": "^3.0.2",
     "nodemon": "^1.10.0"
   }
 }

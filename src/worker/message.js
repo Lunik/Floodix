@@ -1,11 +1,12 @@
 'use strict'
 
-var config = require('../configs/config.json')
-var Log = require('./log.js')
+var path = require('path')
 
-var Command = require('./command.js')
+var Log = require(path.join(__base, 'src/worker/log.js'))
+
+var Command = require(path.join(__base, 'src/worker/command.js'))
 var CommandWorker = new Command()
-var Xp = require('./xp.js')
+var Xp = require(path.join(__base, 'src/worker/xp.js'))
 var XpWorker = new Xp(false)
 
 /**
@@ -48,9 +49,10 @@ Message.prototype.process = function (message, cb) {
 
 Message.prototype.watch = function (message) {
   var pex = XpWorker.pex(message.author)
-  if(pex){
+  if (pex) {
     this.bot.reply(message, pex)
   }
+  return 0
 }
 
 function cleanMessageText (message) {
@@ -60,9 +62,10 @@ function cleanMessageText (message) {
 }
 
 function isMentionated (message) {
+  console.log(message)
   for (let i in message.mentions) {
     let user = message.mentions[i]
-    if (user.id == config.clientid && message.content.split(' ')[0] === '<@' + config.clientid + '>') {
+    if (user.id == __config.clientid && message.content.split(' ')[0] === '<@' + __config.clientid + '>') {
       return true
     }
   }
