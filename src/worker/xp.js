@@ -10,6 +10,9 @@ var math = require('mathjs')
 
 function Xp (useApi) {
   this.users = require(path.join(__base, 'data/xp.json'))
+  for(var u in this.users){
+    this.users[u].last = new Date(this.users[u].last)
+  }
   if (!useApi) {
     this.SaveWorker = new Save('xp', this.users, 300000, function () {
       Log.print('Xp saved.')
