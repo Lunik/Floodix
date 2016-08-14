@@ -8,4 +8,11 @@ script:
 - npm test
 cache:
   directories:
-  - "$(pwd)/node_modules"
+  - $(pwd)/node_modules
+deploy:
+  provider: npm
+  email: guillaume.lunik@gmail.com
+  on:
+    tags: true
+  api_key:
+    secure: Lks0iMMcqpQxoLHdz+BUkuvdXdhfAfrT3gNNUJvvBegtkyNir+9k8x0s478NJ61/NIPjUgFnIWt60Xa9dknLmxiYhUjw3DLv5jiF3UEO/8V08H6auG1O1z9iJg4RplwnofptMJDPByVOQY2c57WuGelOgLluBfRI3/rlBu051Fp22do3DQ1gYU1U3i/liWXRzWq4fvZ0pDck/LnlmjGEwLfIAEJXpZHjg1aH0EzqWHoRATD6JRQvwCKd244NjlNr98vyw69ZFkuJvl4C+Mpzhh2llIG+fqKBrQqjlrgQaiW10Nf+41Jxy0N6GDDRFz7k6gHjrnFklJbM2p1HOFaoCllAm/sdNa5lPyV/bgRBGiaYCIIbOnvRm4abGfvUtd8yu0mOIzubUT34z4ps3PKRCJCbrkFBr4qO3BZIRvH1iSOrhOpwMEkkf0IQ+HI1TyCbSqKGRkbMZXw42Z0XdlZTFXlptUDHl9FKuM4cFWcHDmtKdO/YQUyxB0fesGil6ZZQ1WbxThm9eg6L+hJUZinpGmhPwYhd8p/fGBvGWlf2hU8nP93U3x4nY6pe91PLostT8kTshYMEyL0F/tIoMRGJUPeMhQjLMIg4nSLJskaP/EYqMEUf7aviwDwbFpyBdPvd6WHBtb9kfhxtopWkAYwkjUvCaJbDknO55sXGmlhiEJg=
