@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "sh -c scripts/init.sh",
-    "test": "istanbul cover _mocha -- -R spec test/* && cat ./coverage/lcov.info | ./node_modules/.bin/codacy-coverage",
+    "test": "istanbul cover _mocha -- -R spec test/* && cat ./coverage/lcov.info | codacy-coverage",
     "start": "node src/index.js",
     "dev": "nodemon src/index.js -w src/"
   },
