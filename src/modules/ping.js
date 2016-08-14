@@ -5,7 +5,7 @@ var ping = require('ping')
 function Ping () {
   this.info = {
     name: 'Ping',
-    trigger: 'ping',
+    triggers: ['ping'],
     args: [{
       name: 'Url',
       require: false,

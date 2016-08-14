@@ -17,7 +17,9 @@ function Command (useApi) {
       if (value.match(/.*\.js/)) {
         var name = value.replace(/\.js/, '')
         var module = require(path.join(__base, 'src/modules', value))
-        self.list[module.info.trigger] = module
+        module.info.triggers.forEach(function(trigger){
+          self.list[trigger] = module
+        })
       }
     })
   })

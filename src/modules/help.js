@@ -3,7 +3,7 @@
 function Help () {
   this.info = {
     name: 'Help',
-    trigger: 'help',
+    triggers: ['help'],
     args: [{
       name: 'command',
       require: false,
