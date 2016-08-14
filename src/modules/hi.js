@@ -10,11 +10,7 @@ function Hi () {
 
 Hi.prototype.run = function (user, args, cb) {
   var hi = function (args) {
-    switch (args[0]) {
-      default:
-        return 'Hi !'
-        break
-    }
+    return 'Hi !'
   }
 
   cb(hi(args))
