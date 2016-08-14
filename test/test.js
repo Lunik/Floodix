@@ -232,12 +232,12 @@ describe('Worker', function () {
         done()
       })
     })
-    describe('Process()', function(){
-      it('Command: hi', function(done){
+    describe('Process()', function () {
+      it('Command: hi', function (done) {
         CommandWorker.process({}, {
           trigger: 'hi',
           args: []
-        }, function(res){
+        }, function (res) {
           assert.typeOf(res, 'string')
           done()
         })
@@ -245,41 +245,41 @@ describe('Worker', function () {
     })
   })
 
-  describe('Message', function(){
+  describe('Message', function () {
     var Message = require(path.join(__base, 'src/worker/message.js'))
     var MessageWorker = new Message({
-      on: function(trigger, cb){}
+      on: function (trigger, cb) {}
     })
-    describe('Process()', function(){
-      it('Message: @Floodix hi', function(done){
+    describe('Process()', function () {
+      it('Message: @Floodix hi', function (done) {
         MessageWorker.process({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix hi',
-        }, function(res){
+          cleanContent: '@Floodix hi'
+        }, function (res) {
           assert.typeOf(res, 'string')
           done()
         })
       })
-      it('Message: @Floodix coucou', function(done){
+      it('Message: @Floodix coucou', function (done) {
         MessageWorker.process({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix coucou',
-        }, function(res){
+          cleanContent: '@Floodix coucou'
+        }, function (res) {
           assert(!res)
           done()
         })
       })
-      it('Message: @Floodix imgur', function(done){
+      it('Message: @Floodix imgur', function (done) {
         MessageWorker.process({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix imgur',
-        }, function(res){
+          cleanContent: '@Floodix imgur'
+        }, function (res) {
           assert.typeOf(res, 'string')
           done()
         })

@@ -49,7 +49,7 @@ Message.prototype.process = function (message, cb) {
 
 Message.prototype.watch = function (message) {
   var pex = XpWorker.pex(message.author)
-  if(pex){
+  if (pex) {
     this.bot.reply(message, pex)
   }
   return 0

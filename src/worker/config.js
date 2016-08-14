@@ -2,11 +2,10 @@
 
 var assert = require('assert')
 
-function Config(){
-
+function Config () {
 }
 
-Config.prototype.load = function(path){
+Config.prototype.load = function (path) {
   var config = require(path)
 
   assert(config, messageError('config'))
@@ -27,7 +26,7 @@ Config.prototype.load = function(path){
   return config
 }
 
-function messageError(field){
+function messageError (field) {
   return 'Config Error: ' + field + ' is missing.'
 }
 module.exports = Config
