@@ -18,48 +18,75 @@ fs.writeFileSync(path.join(__base, 'data/xp.json'), JSON.stringify({
 }))
 
 describe('Module', function () {
-  var modules = [{
-    name: 'github',
-    user: {},
-    args: []
-  },
+  var modules = [
+    {
+      name: 'github',
+      tests: [{
+        name: 'Default',
+        user: {},
+        args: []
+      }]
+    },
     {
       name: 'help',
-      user: {},
-      args: []
+      tests: [{
+        name: 'Default',
+        user: {},
+        args: []
+      }]
     },
     {
       name: 'hi',
-      user: {},
-      args: []
+      tests: [{
+        name: 'Default',
+        user: {},
+        args: []
+      }]
     },
     {
       name: 'imgur',
-      user: {},
-      args: ['cat']
+      tests: [{
+        name: 'Default',
+        user: {},
+        args: ['cat']
+      }]
     },
     {
       name: 'ping',
-      user: {},
-      args: ['google.fr']
+      tests: [{
+        name: 'Default',
+        user: {},
+        args: []
+      },
+        {
+          name: 'Ping Hostname',
+          user: {},
+          args: ['google.fr']
+        }]
     },
     {
       name: 'rank',
-      user: {
-        id: '42'
-      },
-      args: []
-    }]
+      tests: [{
+        name: 'Default',
+        user: {
+          id: '42'
+        },
+        args: []
+      }]
+    }
+  ]
 
   modules.forEach(function (module) {
     describe(module.name, function () {
       var m = require(path.join(__base, 'src/modules/' + module.name + '.js'))
-      describe('run()', function () {
-        this.timeout(10000)
-        it('Sould return string.', function (done) {
-          m.run(module.user, module.args, function (res) {
-            assert.typeOf(res, 'string')
-            done()
+      module.tests.forEach(function(test){
+        describe('run('+ test.name +')', function () {
+          this.timeout(10000)
+          it('Sould return string.', function (done) {
+            m.run(test.user, test.args, function (res) {
+              assert.typeOf(res, 'string')
+              done()
+            })
           })
         })
       })
