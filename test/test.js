@@ -110,4 +110,20 @@ describe('Worker', function () {
       })
     })
   })
+  describe('Save', function () {
+    var Save = require(path.join(__base, 'src/worker/save.js'))
+    describe('Contructor()', function(){
+      it('Should save a struct.', function(done){
+        var interval = new Save('test', {}, 10, function(){
+          clearInterval(interval)
+          fs.readFile(path.join(__base, 'data/test.json'), function(err, data) {
+            if (err) throw err
+            var text = data.toString()
+            if(!text.match('{}')) throw 'Data not found.'
+            done()
+          })
+        })
+      })
+    })
+  })
 })
