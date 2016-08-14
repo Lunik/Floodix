@@ -8,6 +8,6 @@
 		"path": "data/"
 	},
 	"api": {
-		"imgur": ""
+		"imgur": "MY_API"
 	}
 }
