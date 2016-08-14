@@ -126,4 +126,15 @@ describe('Worker', function () {
       })
     })
   })
+
+  describe('Config', function(){
+    var Config = require(path.join(__base, 'src/worker/config.js'))
+    describe('Load ()', function(){
+      it('Sould load config.', function(done){
+        var c = new Config()
+        c.load(path.join(__base, 'configs/config.json'))
+        done()
+      })
+    })
+  })
 })
