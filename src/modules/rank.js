@@ -1,6 +1,8 @@
 'use strict'
 
-var Xp = require('../xp.js')
+var path = require('path')
+
+var Xp = require(path.join(__base, 'src/worker/xp.js'))
 
 function Rank () {
   this.info = {
