@@ -52,6 +52,7 @@ Message.prototype.watch = function (message) {
   if(pex){
     this.bot.reply(message, pex)
   }
+  return 0
 }
 
 function cleanMessageText (message) {
@@ -61,6 +62,7 @@ function cleanMessageText (message) {
 }
 
 function isMentionated (message) {
+  console.log(message)
   for (let i in message.mentions) {
     let user = message.mentions[i]
     if (user.id == __config.clientid && message.content.split(' ')[0] === '<@' + __config.clientid + '>') {
