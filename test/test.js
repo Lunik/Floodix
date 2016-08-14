@@ -17,7 +17,7 @@ fs.writeFileSync(path.join(__base, 'data/xp.json'), JSON.stringify({
     'missing': 0,
     'xp': 27
   },
-  '43': {
+  '7': {
     'last': new Date() - 60000,
     'lvl': 10,
     'missing': 0,
