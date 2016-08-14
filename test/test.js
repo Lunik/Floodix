@@ -79,14 +79,32 @@ describe('Module', function () {
   modules.forEach(function (module) {
     describe(module.name, function () {
       var m = require(path.join(__base, 'src/modules/' + module.name + '.js'))
-      module.tests.forEach(function(test){
-        describe('run('+ test.name +')', function () {
+      module.tests.forEach(function (test) {
+        describe('run(' + test.name + ')', function () {
           this.timeout(10000)
           it('Sould return string.', function (done) {
             m.run(test.user, test.args, function (res) {
               assert.typeOf(res, 'string')
               done()
             })
+          })
+        })
+      })
+    })
+  })
+})
+
+describe('Worker', function () {
+  describe('Log', function () {
+    var Log = require(path.join(__base, 'src/worker/log.js'))
+    describe('print()', function () {
+      it('Sould write into log.', function (done) {
+        Log.print('test', function(){
+          fs.readFile(path.join(__base, 'logs/log-' + (new Date()).getDate() + '-' + ((new Date()).getMonth() + 1)), function(err, data) {
+            if (err) throw err
+            var text = data.toString()
+            if(!text.match('test')) throw 'Log not found.'
+            done()
           })
         })
       })
