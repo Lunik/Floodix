@@ -6,6 +6,7 @@ var fs = require('fs')
 global.__base = path.join(__dirname, '..', '/')
 global.__config = require(path.join(__base, 'configs/config.json'))
 __config.clientid = '0'
+__config.api.imgur = process.env.IMGUR_API
 
 var assert = require('chai').assert
 
