@@ -10,10 +10,16 @@ var assert = require('chai').assert
 
 fs.writeFileSync(path.join(__base, 'data/xp.json'), JSON.stringify({
   '42': {
-    'last': new Date(),
+    'last': new Date() - 60000,
     'lvl': 2,
-    'missing': 30,
+    'missing': 0,
     'xp': 27
+  },
+  '43': {
+    'last': new Date() - 60000,
+    'lvl': 10,
+    'missing': 0,
+    'xp': 1000
   }
 }))
 
@@ -133,6 +139,38 @@ describe('Worker', function () {
       it('Sould load config.', function(done){
         var c = new Config()
         c.load(path.join(__base, 'configs/config.json'))
+        done()
+      })
+    })
+  })
+
+  describe('Xp', function(){
+    var Xp = require(path.join(__base, 'src/worker/xp.js'))
+    var XpWorker = new Xp(false)
+    describe('Pex(42)', function(){
+      it('Sould return a string', function(done){
+        var res = XpWorker.pex({
+          id: '42'
+        })
+        assert.typeOf(res, 'string')
+        done()
+      })
+    })
+    describe('Pex(Unknown)', function(){
+      it('Sould return a string', function(done){
+        var res = XpWorker.pex({
+          id: '7'
+        })
+        assert.typeOf(res, 'string')
+        done()
+      })
+    })
+    describe('Pex(Bot)', function(){
+      it('Sould return false', function(done){
+        var res = XpWorker.pex({
+          bot: true
+        })
+        assert(!res)
         done()
       })
     })
