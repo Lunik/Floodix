@@ -5,6 +5,7 @@ var fs = require('fs')
 
 global.__base = path.join(__dirname, '..', '/')
 global.__config = require(path.join(__base, 'configs/config.json'))
+__config.clientid = '0'
 
 var assert = require('chai').assert
 
@@ -235,6 +236,48 @@ describe('Worker', function () {
         CommandWorker.process({}, {
           trigger: 'hi',
           args: []
+        }, function(res){
+          assert.typeOf(res, 'string')
+          done()
+        })
+      })
+    })
+  })
+
+  describe('Message', function(){
+    var Message = require(path.join(__base, 'src/worker/message.js'))
+    var MessageWorker = new Message({
+      on: function(trigger, cb){}
+    })
+    describe('Process()', function(){
+      it('Message: @Floodix hi', function(done){
+        MessageWorker.process({
+          author: {
+            name: 'test'
+          },
+          cleanContent: '@Floodix hi',
+        }, function(res){
+          assert.typeOf(res, 'string')
+          done()
+        })
+      })
+      it('Message: @Floodix coucou', function(done){
+        MessageWorker.process({
+          author: {
+            name: 'test'
+          },
+          cleanContent: '@Floodix coucou',
+        }, function(res){
+          assert(!res)
+          done()
+        })
+      })
+      it('Message: @Floodix imgur', function(done){
+        MessageWorker.process({
+          author: {
+            name: 'test'
+          },
+          cleanContent: '@Floodix imgur',
         }, function(res){
           assert.typeOf(res, 'string')
           done()
