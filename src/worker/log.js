@@ -13,13 +13,14 @@ function Log () {}
  *  Write log into .txt and log it on the screen.
  * @param {string} text - Text to log.
 */
-Log.prototype.print = function (text) {
+Log.prototype.print = function (text, cb) {
   var self = this
-  setTimeout(function () {
-    self.echo(text)
-    fs.appendFile(path.join(__config.log.path, 'log-' + (new Date()).getDate() + '-' + ((new Date()).getMonth() + 1)), '[' + getDate() + '] ' + text + '\n', 'utf8', function (err) {
-      if (err) throw err
-    })
+  self.echo(text)
+  fs.appendFile(path.join(__config.log.path, 'log-' + (new Date()).getDate() + '-' + ((new Date()).getMonth() + 1)), '[' + getDate() + '] ' + text + '\n', 'utf8', function (err) {
+    if (err) throw err
+    if(cb){
+      cb()
+    }
   })
 }
 
