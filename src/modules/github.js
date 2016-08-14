@@ -3,7 +3,7 @@
 function Git () {
   this.info = {
     name: 'Git',
-    triggers: ['git'],
+    triggers: ['git', 'github'],
     args: []
   }
 }

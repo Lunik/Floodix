@@ -3,7 +3,7 @@
 function Hi () {
   this.info = {
     name: 'Hi',
-    triggers: ['hi'],
+    triggers: ['hi', 'hello', 'bonjour', 'salut', 'yo'],
     args: []
   }
 }

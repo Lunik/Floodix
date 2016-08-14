@@ -7,7 +7,7 @@ var Xp = require(path.join(__base, 'src/worker/xp.js'))
 function Rank () {
   this.info = {
     name: 'Rank',
-    triggers: ['rank'],
+    triggers: ['rank', 'lvl'],
     args: []
   }
 }
