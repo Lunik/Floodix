@@ -9,6 +9,8 @@ script:
 cache:
   directories:
   - $(pwd)/node_modules
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
 deploy:
   provider: npm
   email: guillaume.lunik@gmail.com
