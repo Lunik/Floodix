@@ -6,7 +6,7 @@ var fs = require('fs')
 global.__base = path.join(__dirname, '..', '/')
 global.__config = require(path.join(__base, 'configs/config.json'))
 __config.clientid = '0'
-__config.api.imgur = process.env.IMGUR_API || __config.api.imgur 
+__config.api.imgur = process.env.IMGUR_API || __config.api.imgur
 
 var assert = require('chai').assert
 
@@ -79,6 +79,14 @@ describe('Module', function () {
         user: {
           id: '42'
         },
+        args: []
+      }]
+    },
+    {
+      name: 'version',
+      tests: [{
+        name: 'Default',
+        user: {},
         args: []
       }]
     }
