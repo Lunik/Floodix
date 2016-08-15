@@ -29,79 +29,53 @@ describe('Module', function () {
   var modules = [
     {
       name: 'github',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'help',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'hi',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'imgur',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: ['cat']
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: ['cat'] }
+      ]
     },
     {
       name: 'ping',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      },
-        {
-          name: 'Ping Hostname',
-          user: {},
-          args: ['google.fr']
-        }]
+      tests: [
+        { name: 'Default', user: {}, args: [] },
+        { name: 'Ping Hostname', user: {}, args: ['google.fr'] }
+      ]
     },
     {
       name: 'rank',
-      tests: [{
-        name: 'Default',
-        user: {
-          id: '42'
-        },
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: { id: '42' }, args: [] }
+      ]
     },
     {
       name: 'version',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'pokemon',
-      tests: [{
-        name: 'pokemon unknown',
-        user: {},
-        args: ['unknown']
-      },
-      {
-        name: 'pokemon Pikachu',
-        user: {},
-        args: ['Pikachu']
-      }]
+      tests: [
+        { name: 'pokemon unknown', user: {}, args: ['unknown'] },
+        { name: 'pokemon Pikachu', user: {}, args: ['Pikachu'] }
+      ]
     }
   ]
 
