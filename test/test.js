@@ -89,6 +89,19 @@ describe('Module', function () {
         user: {},
         args: []
       }]
+    },
+    {
+      name: 'pokemon',
+      tests: [{
+        name: 'pokemon unknown',
+        user: {},
+        args: ['unknown']
+      },
+      {
+        name: 'pokemon Pikachu',
+        user: {},
+        args: ['Pikachu']
+      }]
     }
   ]
 
