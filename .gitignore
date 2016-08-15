@@ -4,3 +4,4 @@ configs/*.json
 logs/
 data/
 coverage/
+npm-debug.log
