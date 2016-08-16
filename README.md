@@ -1,5 +1,10 @@
 # Floodix
-[![codecov](https://codecov.io/gh/Lunik/Floodix/branch/master/graph/badge.svg)](https://codecov.io/gh/Lunik/Floodix)
+[![npm](https://img.shields.io/npm/v/floodix.svg)](https://www.npmjs.com/package/floodix)
+[![Travis branch](https://img.shields.io/travis/Lunik/Floodix/master.svg)](https://travis-ci.org/Lunik/Floodix)
+[![Codecov branch](https://img.shields.io/codecov/c/github/Lunik/Floodix/master.svg)](https://codecov.io/gh/Lunik/Floodix)
+[![Dependency Status](https://gemnasium.com/badges/github.com/Lunik/Floodix.svg)](https://gemnasium.com/github.com/Lunik/Floodix)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](http://standardjs.com/)
+
 
 ## Installation
 ```
