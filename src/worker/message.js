@@ -17,27 +17,45 @@ var CleverWorker = new Clever()
 */
 function Message (bot) {
   var self = this
-  this.bot = bot
-  bot.on('message', function (message) {
-    self.watch(message)
+  self.bot = bot
+  bot.on('message', function(message){
+    self.handle(message, function(){})
+  })
+}
+
+Message.prototype.handle = function(message, cb){
+  var self = this
+  self.watch(message)
     if (isMentionated(message)) {
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
       self.process(message, function (results) {
         if (results) {
-          bot.reply(message, results)
+          self.bot.reply(message, results)
+          cb({
+            type: 'command'
+          })
         } else {
           if(!__config.api.cleverbot.active){
+            cb({
+              type: 'noclever'
+            })
             return
           }
           CleverWorker.process(cleanMessageText(message), function(res){
             if(res !== ''){
-              bot.reply(message, res)
+              self.bot.reply(message, res)
             }
+            cb({
+              type: 'clever'
+            })
           })
         }
       })
+    } else {
+      cb({
+        type: 'none'
+      })
     }
-  })
 }
 
 Message.prototype.process = function (message, cb) {

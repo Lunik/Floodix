@@ -246,39 +246,70 @@ describe('Worker', function () {
   describe('Message', function () {
     var Message = require(path.join(__base, 'src/worker/message.js'))
     var MessageWorker = new Message({
-      on: function (trigger, cb) {}
+      on: function () {},
+      reply: function(){}
     })
-    describe('Process()', function () {
+    describe('Handle()', function () {
       it('Message: @Floodix hi', function (done) {
-        MessageWorker.process({
+        MessageWorker.handle({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix hi'
+          channel: {
+            name: 'test'
+          },
+          content: '<@0> hi',
+          cleanContent: '@Floodix hi',
+          mentions: [
+            {
+              id: __config.clientid
+            }
+          ]
         }, function (res) {
-          assert.typeOf(res, 'string')
+          assert(res)
+          assert.typeOf(res.type, 'string')
           done()
         })
       })
       it('Message: @Floodix coucou', function (done) {
-        MessageWorker.process({
+        MessageWorker.handle({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix coucou'
+          channel: {
+            name: 'test'
+          },
+          content: '<@0> coucou',
+          cleanContent: '@Floodix coucou',
+          mentions: [
+            {
+              id: __config.clientid
+            }
+          ]
         }, function (res) {
-          assert(!res)
+          assert(res)
+          assert.typeOf(res.type, 'string')
           done()
         })
       })
       it('Message: @Floodix imgur', function (done) {
-        MessageWorker.process({
+        MessageWorker.handle({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix imgur'
+          channel: {
+            name: 'test'
+          },
+          content: '<@0> imgur',
+          cleanContent: '@Floodix imgur',
+          mentions: [
+            {
+              id: __config.clientid
+            }
+          ]
         }, function (res) {
-          assert.typeOf(res, 'string')
+          assert(res)
+          assert.typeOf(res.type, 'string')
           done()
         })
       })
