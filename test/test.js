@@ -6,7 +6,10 @@ var fs = require('fs')
 global.__base = path.join(__dirname, '..', '/')
 global.__config = require(path.join(__base, 'configs/config.json'))
 __config.clientid = '0'
-__config.api.imgur = process.env.IMGUR_API || __config.api.imgur
+__config.api.imgur.key = process.env.IMGUR_API || __config.api.imgur
+
+__config.api.cleverbot.user = process.env.CLEVERBOT_API_USER || __config.api.cleverbot.user
+__config.api.cleverbot.key = process.env.CLEVERBOT_API_KEY || __config.api.cleverbot.key
 
 var assert = require('chai').assert
 
@@ -29,79 +32,53 @@ describe('Module', function () {
   var modules = [
     {
       name: 'github',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'help',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'hi',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'imgur',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: ['cat']
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: ['cat'] }
+      ]
     },
     {
       name: 'ping',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      },
-        {
-          name: 'Ping Hostname',
-          user: {},
-          args: ['google.fr']
-        }]
+      tests: [
+        { name: 'Default', user: {}, args: [] },
+        { name: 'Ping Hostname', user: {}, args: ['google.fr'] }
+      ]
     },
     {
       name: 'rank',
-      tests: [{
-        name: 'Default',
-        user: {
-          id: '42'
-        },
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: { id: '42' }, args: [] }
+      ]
     },
     {
       name: 'version',
-      tests: [{
-        name: 'Default',
-        user: {},
-        args: []
-      }]
+      tests: [
+        { name: 'Default', user: {}, args: [] }
+      ]
     },
     {
       name: 'pokemon',
-      tests: [{
-        name: 'pokemon unknown',
-        user: {},
-        args: ['unknown']
-      },
-      {
-        name: 'pokemon Pikachu',
-        user: {},
-        args: ['Pikachu']
-      }]
+      tests: [
+        { name: 'pokemon unknown', user: {}, args: ['unknown'] },
+        { name: 'pokemon Pikachu', user: {}, args: ['Pikachu'] }
+      ]
     }
   ]
 
@@ -269,38 +246,81 @@ describe('Worker', function () {
   describe('Message', function () {
     var Message = require(path.join(__base, 'src/worker/message.js'))
     var MessageWorker = new Message({
-      on: function (trigger, cb) {}
+      on: function () {},
+      reply: function(){}
     })
-    describe('Process()', function () {
+    describe('Handle()', function () {
       it('Message: @Floodix hi', function (done) {
-        MessageWorker.process({
+        MessageWorker.handle({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix hi'
+          channel: {
+            name: 'test'
+          },
+          content: '<@0> hi',
+          cleanContent: '@Floodix hi',
+          mentions: [
+            {
+              id: __config.clientid
+            }
+          ]
         }, function (res) {
-          assert.typeOf(res, 'string')
+          assert(res)
+          assert.typeOf(res.type, 'string')
           done()
         })
       })
-      it('Message: @Floodix coucou', function (done) {
-        MessageWorker.process({
+      it('Message: @Floodix ça va ?', function (done) {
+        MessageWorker.handle({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix coucou'
+          channel: {
+            name: 'test'
+          },
+          content: '<@0> ça va ?',
+          cleanContent: '@Floodix ça va ?',
+          mentions: [
+            {
+              id: __config.clientid
+            }
+          ]
         }, function (res) {
-          assert(!res)
+          assert(res)
+          assert.typeOf(res.type, 'string')
           done()
         })
       })
       it('Message: @Floodix imgur', function (done) {
-        MessageWorker.process({
+        MessageWorker.handle({
           author: {
             name: 'test'
           },
-          cleanContent: '@Floodix imgur'
+          channel: {
+            name: 'test'
+          },
+          content: '<@0> imgur',
+          cleanContent: '@Floodix imgur',
+          mentions: [
+            {
+              id: __config.clientid
+            }
+          ]
         }, function (res) {
+          assert(res)
+          assert.typeOf(res.type, 'string')
+          done()
+        })
+      })
+    })
+  })
+  describe('Clever', function(){
+    var Clever = require(path.join(__base, 'src/worker/clever.js'))
+    var CleverWorker = new Clever()
+    describe('Process()', function(){
+      it('Ask someting', function(done){
+        CleverWorker.process('Hi', function(res){
           assert.typeOf(res, 'string')
           done()
         })

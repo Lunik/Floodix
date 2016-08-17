@@ -2,6 +2,8 @@
 var path = require('path')
 var imgur = require('imgur-search')
 
+var ImgurWorker = new imgur(__config.api.imgur.key)
+
 function Imgur () {
   this.info = {
     name: 'Imgur',
@@ -15,12 +17,11 @@ function Imgur () {
 }
 
 Imgur.prototype.run = function (user, args, cb) {
-  if (__config.api.imgur === '') {
-    cb('You need an Imgur API key. See here to get one https://api.imgur.com/oauth2/addclient.')
+  if(!__config.api.imgur.active){
+    cb('Imgur API desactivated.')
     return
   }
-  var Imgur = new imgur(__config.api.imgur)
-  Imgur.getRandomFromSearch(args.join(' '))
+  ImgurWorker.getRandomFromSearch(args.join(' '))
     .then(function (result) {
       cb(result.title + ' ' + result.link)
     })
