@@ -30,7 +30,9 @@ function Message (bot) {
             return
           }
           CleverWorker.process(cleanMessageText(message), function(res){
-            bot.reply(message, res)
+            if(res !== ''){
+              bot.reply(message, res)
+            }
           })
         }
       })
