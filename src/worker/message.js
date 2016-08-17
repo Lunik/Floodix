@@ -26,6 +26,9 @@ function Message (bot) {
         if (results) {
           bot.reply(message, results)
         } else {
+          if(!__config.api.cleverbot.active){
+            return
+          }
           CleverWorker.process(cleanMessageText(message), function(res){
             bot.reply(message, res)
           })
