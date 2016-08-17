@@ -271,7 +271,7 @@ describe('Worker', function () {
           done()
         })
       })
-      it('Message: @Floodix coucou', function (done) {
+      it('Message: @Floodix ça va ?', function (done) {
         MessageWorker.handle({
           author: {
             name: 'test'
@@ -279,8 +279,8 @@ describe('Worker', function () {
           channel: {
             name: 'test'
           },
-          content: '<@0> coucou',
-          cleanContent: '@Floodix coucou',
+          content: '<@0> ça va ?',
+          cleanContent: '@Floodix ça va ?',
           mentions: [
             {
               id: __config.clientid
