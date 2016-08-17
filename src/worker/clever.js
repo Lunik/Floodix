@@ -10,13 +10,11 @@ function Clever(){
 	if(!__config.api.cleverbot.active){
     	return
     }
-	var self = this
+	bot.setNick('Floodix')
 	bot.create(function (err, session) {
 		if(err){
 			Log.print(err)
 		}
-		self.session = session
-		bot.setNick(session)
 	})
 }
 
