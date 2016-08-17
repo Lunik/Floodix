@@ -290,8 +290,6 @@ describe('Worker', function () {
     describe('Process()', function(){
       it('Ask someting', function(done){
         CleverWorker.process('Hi', function(res){
-          console.log(res.err)
-          assert(!res.err)
           assert.typeOf(res, 'string')
           done()
         })

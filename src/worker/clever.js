@@ -21,9 +21,7 @@ function Clever(){
 Clever.prototype.process = function(message, cb){
 	bot.ask(message, function(err, res){
 		if(err){
-			cb({
-				err: err
-			})
+			Log.print(err)
 		}
 		cb(res)
 	})
