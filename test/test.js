@@ -6,7 +6,10 @@ var fs = require('fs')
 global.__base = path.join(__dirname, '..', '/')
 global.__config = require(path.join(__base, 'configs/config.json'))
 __config.clientid = '0'
-__config.api.imgur = process.env.IMGUR_API || __config.api.imgur
+__config.api.imgur.key = process.env.IMGUR_API || __config.api.imgur
+
+__config.api.cleverbot.user = process.env.CLEVERBOT_API_USER || __config.api.cleverbot.user
+__config.api.cleverbot.key = process.env.CLEVERBOT_API_KEY || __config.api.cleverbot.key
 
 var assert = require('chai').assert
 
