@@ -281,4 +281,17 @@ describe('Worker', function () {
       })
     })
   })
+  describe('Clever', function(){
+    var Clever = require(path.join(__base, 'src/worker/clever.js'))
+    var CleverWorker = new Clever()
+    describe('Process()', function(){
+      it('Ask someting', function(done){
+        CleverWorker.process('Hi', function(res){
+          assert(!res.err)
+          assert.typeOf(res, 'string')
+          done()
+        })
+      })
+    })
+  })
 })

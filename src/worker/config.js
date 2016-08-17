@@ -22,6 +22,9 @@ Config.prototype.load = function (path) {
 
   assert(config.api, messageError('api'))
   assert(config.api.imgur, messageError('api.imgur'))
+  assert(config.api.cleverbot, messageError('api.cleverbot'))
+  assert(config.api.cleverbot.user, messageError('api.cleverbot.user'))
+  assert(config.api.cleverbot.key, messageError('api.cleverbot.key'))
 
   return config
 }

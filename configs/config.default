@@ -8,6 +8,10 @@
 		"path": "data/"
 	},
 	"api": {
-		"imgur": "MY_API"
+		"imgur": "MY_API",
+		"cleverbot": {
+			"user": "USER_API",
+			"key": "KEY_API"
+		}
 	}
 }

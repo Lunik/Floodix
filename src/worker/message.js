@@ -5,9 +5,11 @@ var path = require('path')
 var Log = require(path.join(__base, 'src/worker/log.js'))
 
 var Command = require(path.join(__base, 'src/worker/command.js'))
-var CommandWorker = new Command()
+var CommandWorker = new Command(false)
 var Xp = require(path.join(__base, 'src/worker/xp.js'))
 var XpWorker = new Xp(false)
+var Clever = require(path.join(__base, 'src/worker/clever.js'))
+var CleverWorker = new Clever()
 
 /**
  *  Message handler.
@@ -23,6 +25,10 @@ function Message (bot) {
       self.process(message, function (results) {
         if (results) {
           bot.reply(message, results)
+        } else {
+          CleverWorker.process(cleanMessageText(message), function(res){
+            bot.reply(message, res)
+          })
         }
       })
     }
