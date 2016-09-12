@@ -26,4 +26,5 @@ function botReady (err, token, a, b, c) {
 var bot = new Discord.Client()
 
 Log.print('Bot starting...')
-bot.loginWithToken(__config.token, botReady)
+bot.on('ready', botReady)
+bot.login(__config.token)

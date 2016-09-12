@@ -26,11 +26,11 @@ function Message (bot) {
 Message.prototype.handle = function(message, cb){
   var self = this
   self.watch(message)
-    if (isMentionated(message)) {
+    if (message.isMentioned({ 'id': __config.clientid })) {
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
       self.process(message, function (results) {
         if (results) {
-          self.bot.reply(message, results)
+          message.reply(results)
           cb({
             type: 'command'
           })
@@ -43,7 +43,7 @@ Message.prototype.handle = function(message, cb){
           }
           CleverWorker.process(cleanMessageText(message), function(res){
             if(res !== ''){
-              self.bot.reply(message, res)
+              message.reply(results)
             }
             cb({
               type: 'clever'
@@ -88,16 +88,6 @@ function cleanMessageText (message) {
   var text = message.cleanContent.split(' ')
   text.splice(0, 1)
   return text.join(' ').trim().toLowerCase()
-}
-
-function isMentionated (message) {
-  for (let i in message.mentions) {
-    let user = message.mentions[i]
-    if (user.id == __config.clientid && message.content.split(' ')[0] === '<@' + __config.clientid + '>') {
-      return true
-    }
-  }
-  return false
 }
 
 module.exports = Message

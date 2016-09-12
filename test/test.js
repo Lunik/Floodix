@@ -263,11 +263,13 @@ describe('Worker', function () {
           },
           content: '<@0> hi',
           cleanContent: '@Floodix hi',
-          mentions: [
-            {
-              id: __config.clientid
-            }
-          ]
+          isMentioned: function(){ return true },
+          reply: function(){},
+          mentions: {
+            users: [{
+                id: __config.clientid
+            }]
+          }
         }, function (res) {
           assert(res)
           assert.typeOf(res.type, 'string')
@@ -284,11 +286,13 @@ describe('Worker', function () {
           },
           content: '<@0> ça va ?',
           cleanContent: '@Floodix ça va ?',
-          mentions: [
-            {
-              id: __config.clientid
-            }
-          ]
+          isMentioned: function(){ return true },
+          reply: function(){},
+          mentions: {
+            users: [{
+                id: __config.clientid
+            }]
+          }
         }, function (res) {
           assert(res)
           assert.typeOf(res.type, 'string')
@@ -305,11 +309,13 @@ describe('Worker', function () {
           },
           content: '<@0> imgur',
           cleanContent: '@Floodix imgur',
-          mentions: [
-            {
-              id: __config.clientid
-            }
-          ]
+          isMentioned: function(){ return true },
+          reply: function(){},
+          mentions: {
+            users: [{
+                id: __config.clientid
+            }]
+          }
         }, function (res) {
           assert(res)
           assert.typeOf(res.type, 'string')
