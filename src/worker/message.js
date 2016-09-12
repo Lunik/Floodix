@@ -30,7 +30,7 @@ Message.prototype.handle = function(message, cb){
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
       self.process(message, function (results) {
         if (results) {
-          message.reply(results).catch(console.log)
+          message.reply(results)
           cb({
             type: 'command'
           })
@@ -43,7 +43,7 @@ Message.prototype.handle = function(message, cb){
           }
           CleverWorker.process(cleanMessageText(message), function(res){
             if(res !== ''){
-              message.reply(results).catch(console.log)
+              message.reply(results)
             }
             cb({
               type: 'clever'
