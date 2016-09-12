@@ -30,7 +30,7 @@ Message.prototype.handle = function(message, cb){
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
       self.process(message, function (results) {
         if (results) {
-          self.bot.reply(message, results)
+          message.reply(results).catch(console.log)
           cb({
             type: 'command'
           })
@@ -43,7 +43,7 @@ Message.prototype.handle = function(message, cb){
           }
           CleverWorker.process(cleanMessageText(message), function(res){
             if(res !== ''){
-              self.bot.reply(message, res)
+              message.reply(results).catch(console.log)
             }
             cb({
               type: 'clever'
@@ -91,13 +91,7 @@ function cleanMessageText (message) {
 }
 
 function isMentionated (message) {
-  for (let i in message.mentions) {
-    let user = message.mentions[i]
-    if (user.id == __config.clientid && message.content.split(' ')[0] === '<@' + __config.clientid + '>') {
-      return true
-    }
-  }
-  return false
+  return message.mentions.users.find('id', __config.clientid)
 }
 
 module.exports = Message
