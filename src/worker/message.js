@@ -26,7 +26,7 @@ function Message (bot) {
 Message.prototype.handle = function(message, cb){
   var self = this
   self.watch(message)
-    if (isMentionated(message)) {
+    if (message.isMentioned({ 'id': __config.clientid })) {
       Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
       self.process(message, function (results) {
         if (results) {
@@ -88,10 +88,6 @@ function cleanMessageText (message) {
   var text = message.cleanContent.split(' ')
   text.splice(0, 1)
   return text.join(' ').trim().toLowerCase()
-}
-
-function isMentionated (message) {
-  return message.mentions.users.find('id', __config.clientid)
 }
 
 module.exports = Message
