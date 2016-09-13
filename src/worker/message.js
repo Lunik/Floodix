@@ -27,7 +27,7 @@ Message.prototype.handle = function(message, cb){
   var self = this
   self.watch(message)
     if (message.isMentioned({ 'id': __config.clientid })) {
-      Log.print('[' + message.channel.name + '] ' + message.author.name + ': ' + message.cleanContent)
+      Log.print('[' + message.channel.name + '] ' + message.author.username + ': ' + message.cleanContent)
       self.process(message, function (results) {
         if (results) {
           message.reply(results)
