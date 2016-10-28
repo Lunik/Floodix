@@ -14,7 +14,7 @@
   "dependencies": {
     "cleverbot.io": "^1.0.4",
     "crypto-rand": "0.0.2",
-    "discord.js": "^10.0.0",
+    "discord.js": "^10.0.1",
     "imgur-search": "^1.0.1",
     "mathjs": "^3.5.2",
     "ping": "^0.2.1"
