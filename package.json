@@ -17,7 +17,7 @@
     "discord.js": "^11.0.0",
     "imgur-search": "^1.0.1",
     "mathjs": "^3.5.2",
-    "ping": "^0.2.1"
+    "ping": "0.2.1"
   },
   "devDependencies": {
     "chai": "^3.5.0",
